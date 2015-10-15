@@ -47,5 +47,10 @@ vic <- vic[vic$Type == "S", ]
 table(vic$Species, vic$Speed_knots) #same table but only for Vic
 table(lisa$Species, lisa$Speed_knots) #same table but only for Lisa
 
+#missed sightings by Vic
+table(dat$Species[dat$Observer == "Lisa"], dat$Speed_knots[dat$Observer == "Lisa"])
+
+#missed sightings by Lisa
+table(dat$Species[dat$Observer == "Vic"], dat$Speed_knots[dat$Observer == "Vic"])
 
 
