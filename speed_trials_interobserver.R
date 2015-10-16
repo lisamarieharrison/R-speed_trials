@@ -54,3 +54,30 @@ table(dat$Species[dat$Observer == "Lisa"], dat$Speed_knots[dat$Observer == "Lisa
 table(dat$Species[dat$Observer == "Vic"], dat$Speed_knots[dat$Observer == "Vic"])
 
 
+#paired line plot of sightings for baitfish, dolphins and sharks
+
+for (species in c("B", "BOT", "S")) {
+  
+  plot_tab <- table(dat$Speed_knots[dat$Species == species], dat$Trial_number[dat$Species == species])
+  plot_tab <- plot_tab[1:2, ] + rep(plot_tab[3, ], each = 2) #add "both" sightings to both speeds
+  plot_tab <- rbind(plot_tab[2, ], plot_tab[1, ]) #swap rows to get 80knots on left side of plot
+  matplot(plot_tab, type = "b", pch = 19, xaxt = "n", xlab = "Speed (knots)", 
+          ylab = "Number of sightings", lty = 1, col = "black") 
+  axis(1, c(1, 2), c("80", "100"))
+  
+  #add plot title according to species
+  if (species == "B") {
+    title("Baitfish")
+  } else {
+    if (species == "BOT") {
+      title("Dolphins")
+    } else {
+      if (species == "S") {
+        title("Sharks")    
+      }
+    }
+  }
+  
+}
+
+
