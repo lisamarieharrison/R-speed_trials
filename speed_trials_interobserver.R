@@ -81,3 +81,20 @@ for (species in c("B", "BOT", "S")) {
 }
 
 
+
+tab_dat <- table(dat$Speed[dat$Species == "B"], dat$Trial[dat$Species == "B"])
+tab_dat <- tab_dat[1:2, ] + rep(tab_dat[3, ], each = 2)
+
+t.test(tab_dat[2, ], tab_dat[1, ],paired=TRUE)
+
+
+
+
+
+
+
+
+
+
+
+
